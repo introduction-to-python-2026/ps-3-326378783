@@ -1,17 +1,11 @@
 def move(my_list, direction):
-
-    # Finds the index of the one in the list
-    index_of_one = my_list.index(1)
-    list_num = len(my_list)
-    if index_of_one==0 or index_of_one==(list_num-1) :
-        my_list[index_of_one] = 1
-    # Move the one to the left or to the right
-    elif direction == 'right':
-        my_list[index_of_one] = 0
-        my_list[index_of_one + 1] = 1
-
-    elif direction == 'left':
-        my_list[index_of_one] = 0
-        my_list[index_of_one - 1] = 1
-
+    # Find the current position of the pig (1)
+    index = my_list.index(1)
+    
+    # Move the pig left or right
+    if direction == 'left' and index > 0:
+        my_list[index], my_list[index-1] = 0, 1
+    elif direction == 'right' and index < len(my_list)-1:
+        my_list[index], my_list[index+1] = 0, 1
+    
     return my_list
